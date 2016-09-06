@@ -1,0 +1,42 @@
+function y = gera_chirp(t,Fstart, Fend, chirp_order, L) 
+
+% Chirp 
+
+  if ~exist('Fstart','var') Fstart = 1e3; end;
+  if isempty(Fstart) Fstart = 1e3; end;
+  if ~exist('Fend','var') Fend = 1e6; end;
+  if isempty(Fend) Fend = 1e6; end;
+  if ~exist('L','var') L = 500; end;
+  if isempty(L) L = 500; end;
+
+    Tchirp = L*(chirp_order+1)/((chirp_order*Fstart) + Fend);
+    k = (Fend-Fstart)/Tchirp;
+    
+    if (Tchirp > N*(1/fs))
+        str = '-------- Simulacao inferior a um periodo da chirp (';
+        fprintf('\n\n%s %6.2f us) --------\n\n',str, Tchirp*1e6);
+        error '-------- Aumente o periodo da simulacao --------'
+    end
+    
+    dT = 1/fs;
+    t = [0:N-1]*dT;
+    
+    y = zeros(1,N);
+    %y = chirp((n/fs), Fstart, DURACAO, Fend, 'linear').*(degrau(n, fs, 0) - degrau(n, fs, DURACAO) );
+    y_ideal  = sin(2*pi*((Fstart*t(1:Tchirp*fs)) + ((k/2)*(t(1:Tchirp*fs).^2)) ));
+    y_ternary_ideal = round(y_ideal*((2^1)-1))/((2^1)-1);
+    
+    ciclos = fix(N*(1/fs)/Tchirp);
+    if (ciclos <= 1)                
+        y(1:Tchirp*fs) = y_ideal;    
+    else
+        for indice = 0:(ciclos-1),                
+            inicio = fix(1 + (indice*Tchirp*fs));
+            fim    = fix(inicio + (Tchirp*fs)) - 1;
+            
+            y(inicio:fim) = y_ternary_ideal;         
+        end;
+    end
+    
+    
+end

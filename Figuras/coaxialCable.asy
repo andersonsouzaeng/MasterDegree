@@ -1,0 +1,15 @@
+Version 4
+SymbolType BLOCK
+LINE Normal 128 -64 16 -64
+LINE Normal 128 0 16 0
+CIRCLE Normal 32 -64 0 0
+ARC Normal 112 0 144 -64 128 0 128 -64
+TEXT 6 -77 Left 2 Cabo Coaxial
+PIN 16 -32 NONE 8
+PINATTR SpiceOrder 1
+PIN 16 0 NONE 8
+PINATTR SpiceOrder 2
+PIN 128 0 NONE 8
+PINATTR SpiceOrder 3
+PIN 144 -32 NONE 8
+PINATTR SpiceOrder 4

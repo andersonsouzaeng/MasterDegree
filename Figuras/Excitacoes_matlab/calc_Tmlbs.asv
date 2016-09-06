@@ -1,0 +1,3 @@
+function periodo = calc_Tmlbs(Fstart, Fend, chirp_order, L) 
+   periodo = ((2^NBITS) - 1)*(1/FREQUENCY_CLK);
+end

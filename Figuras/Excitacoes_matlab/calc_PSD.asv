@@ -1,0 +1,10 @@
+function psd = calc_PSD(x)
+
+[Rxx,lag] = xcorr(x);
+figure;
+plot(lag,Rxx);
+psd = fft(Rxx);
+
+figure(5);
+ 
+end

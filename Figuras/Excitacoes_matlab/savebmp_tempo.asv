@@ -1,0 +1,40 @@
+function savebmp_tempo(y,fs,name)
+
+
+h_fft = figure;
+set(h,'color', [1 1 1]);
+set(h,'position', [337   433   575   256]);
+
+regiao_plot = [1:fix(t_chirp(end)*fs*0.2)];
+plot(t_chirp(primeiros_percent)*1e3, y_chirp(primeiros_percent),'k','LineWidth',1);
+set(get(h_chirp,'CurrentAxes'), 'box', 'off');
+xlabel('t (ms)');
+ylabel('Amplitude');
+
+
+
+print(h,'-dbitmap',['.\Tempo\' 'chirp'  str '.bmp']);
+
+
+h_fft = figure;
+set(h_fft,'color', [1 1 1]);
+set(h_fft,'position', [337   433   575   256]);
+[Y, f] = calc_fft(y,fs);
+semilogx(f, abs(Y(1:end/2 + 1) ),'k','LineWidth',1);
+grid;
+xlabel('Frequência (Hz)');
+ylabel('Magnitude');
+
+h_fft_dB = figure;
+set(h_fft_dB,'color', [1 1 1]);
+set(h_fft_dB,'position', [337   433   575   256]);
+semilogx(f, 20*log(abs(Y(1:fix(length(Y)/2) + 1))),'k','LineWidth',1);
+grid;
+xlabel('Frequência (Hz)');
+ylabel('Magnitude (dB)');
+
+
+print(h_fft,'-dbitmap',['.\DFT\' name '.bmp']);
+print(h_fft_dB,'-dbitmap',['.\DFTdB\' name '.bmp']);
+
+end

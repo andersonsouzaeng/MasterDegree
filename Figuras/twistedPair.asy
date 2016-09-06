@@ -1,0 +1,20 @@
+Version 4
+SymbolType BLOCK
+ARC Normal -48 -16 -16 16 -48 0 -16 0
+ARC Normal 16 16 -16 -16 16 0 -16 0
+ARC Normal 16 -16 48 16 16 0 48 0
+ARC Normal -48 16 -16 -16 -16 0 -48 0 2
+ARC Normal 16 -16 -16 16 -16 0 16 0 2
+ARC Normal 16 16 48 -16 48 0 16 0 2
+ARC Normal -48 16 -80 -16 -64 16 -48 0 2
+ARC Normal -48 -16 -80 16 -48 0 -64 -16
+ARC Normal 48 -16 80 16 64 -16 48 0
+ARC Normal 48 16 80 -16 48 0 64 16 2
+PIN -64 -16 NONE 8
+PINATTR SpiceOrder 1
+PIN -64 16 NONE 8
+PINATTR SpiceOrder 2
+PIN 64 -16 NONE 8
+PINATTR SpiceOrder 3
+PIN 64 16 NONE 8
+PINATTR SpiceOrder 4
